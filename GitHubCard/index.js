@@ -4,8 +4,6 @@
 */
 const cardContainer = document.querySelector(".cards");
 
-const followersArray = ["https://api.github.com/users/JChartier001", "https://api.github.com/users/cjogles", "https://api.github.com/users/AMC-ai"];
-
 axios
   .get("https://api.github.com/users/indiMjc")
   .then(response => {
@@ -15,19 +13,7 @@ axios
 .catch(error => {
   console.log("The data was not returned", error);
 });
-
-// followersArray.map(ele => {
-//   axios
-//   .get(ele)
-//   .then(response => {
-//     const newUser = CardMaker;
-//     cardContainer.appendChild(newUser(response.data));
-//   })
-// })
-// .catch(error => {
-//   console.log("The data was not returned", error);
-// });
-
+//stretch
 axios
   .get("https://api.github.com/users/indiMjc/followers")
   .then(response => {
@@ -41,6 +27,34 @@ axios
   .catch(error => {
     console.log("The data was not returned", error);
   });
+
+// const followersArray = ["https://api.github.com/users/JChartier001", "https://api.github.com/users/cjogles", "https://api.github.com/users/AMC-ai", "https://api.github.com/users/tetondan", "https://api.github.com/users/dustinmyers"];
+
+// followersArray.map(ele => {
+//   axios
+//   .get(ele)
+//   .then(response => {
+//     const newUser = CardMaker;
+//     cardContainer.appendChild(newUser(response.data));
+//   })
+// })
+// .catch(error => {
+//   console.log("The data was not returned", error);
+// });
+
+// const followersArray = ["JChartier001", "cjogles", "AMC-ai", "tetondan", "dustinmyers"];
+
+// followersArray.map(ele => {
+//   axios
+//   .get(`https://api.github.com/users/${ele}`)
+//   .then(response => {
+//     const newUser = CardMaker;
+//     cardContainer.appendChild(newUser(response.data));
+//   })
+// })
+// .catch(error => {
+//   console.log("The data was not returned", error);
+// });
 
 function CardMaker (userData) {
   //create elements
@@ -67,7 +81,7 @@ function CardMaker (userData) {
   location.textContent = `Location: ${userData.location}`;
   profile.textContent = `Profile: `;
   profileLink.textContent = userData.html_url;
-  profileLink.setAttribute("href", userData.hrml_url);
+  profileLink.href = userData.hrml_url;
   follower.textContent = `Followers: ${userData.followers}`;
   followingCount.textContent = `Following: ${userData.following}`;
   bio.textContent = `Bio: ${userData.bio}`;
