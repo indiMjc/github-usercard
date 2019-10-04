@@ -13,7 +13,7 @@ axios
 .catch(error => {
   console.log("The data was not returned", error);
 });
-//stretch
+// //stretch
 axios
   .get("https://api.github.com/users/indiMjc/followers")
   .then(response => {
@@ -44,9 +44,11 @@ axios
 
 // const followersArray = ["JChartier001", "cjogles", "AMC-ai", "tetondan", "dustinmyers"];
 
+// axios.defaults.baseURL = 'https://api.github.com/users/';
+
 // followersArray.map(ele => {
 //   axios
-//   .get(`https://api.github.com/users/${ele}`)
+//   .get(ele)
 //   .then(response => {
 //     const newUser = CardMaker;
 //     cardContainer.appendChild(newUser(response.data));
@@ -73,11 +75,11 @@ function CardMaker (userData) {
   card.classList.add("card");
   cardInfo.classList.add("card-info");
   user.classList.add("name")
-  userName.classList.add("user");
+  userName.classList.add("username");
   //populate
   userImg.src = userData.avatar_url;
   user.textContent = userData.name;
-  userName.textContent = `User Name: ${userData.login}`;
+  userName.textContent = userData.login;
   location.textContent = `Location: ${userData.location}`;
   profile.textContent = `Profile: `;
   profileLink.textContent = userData.html_url;
